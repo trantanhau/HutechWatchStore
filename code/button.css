@@ -1,0 +1,85 @@
+.submit_btn {
+  width: auto;
+  display: inline-block;
+  background: white;
+  padding: 0px 50px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 50px;
+  border-radius: 5px;
+  outline: none !important;
+  box-shadow: none !important;
+  text-align: center;
+  border: 1px solid white;
+  cursor: pointer;
+}
+.btn_1 {
+  display: inline-block;
+  padding: 17px 50px;
+  border-radius: 5px;
+  background-color: wheat;
+  border: 2px solid wheat;
+  font-size: 15px;
+  font-weight: 500;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  text-transform: capitalize;
+  color: #fff;
+}
+.btn_3 {
+  display: inline-block;
+  padding: 18px 36px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid wheat;
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.btn_2 {
+  display: inline-block;
+  width: 180px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  background-color: white;
+  font-size: 15px;
+  /* font-family: $font_stack_2; */
+  font-weight: 500;
+  color: #1e1e1e;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  text-transform: capitalize;
+}
+
+.btn_4 {
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 53px;
+  display: inline-block;
+  border-radius: 5px;
+}
+.btn_4 img {
+  width: 20px;
+  margin-left: 15px;
+}
+/*=================== custom button rule start ====================*/
+
+.button {
+  display: inline-block;
+  border: 1px solid transparent;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 12px 54px;
+  border-radius: 4px;
+  color: white;
+  border: 1px solid white;
+  text-transform: uppercase;
+  background-color: white;
+  cursor: pointer;
+}
