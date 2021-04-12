@@ -1472,42 +1472,10 @@ input:focus::-moz-placeholder {
   animation-name: float-bob;
   animation-duration: 2s;
   animation-iteration-count: infinite;
-  -moz-animation-name: float-bob;
-  -moz-animation-duration: 2s;
-  -moz-animation-iteration-count: infinite;
-  -moz-animation-timing-function: linear;
-  -ms-animation-name: float-bob;
-  -ms-animation-duration: 2s;
-  -ms-animation-iteration-count: infinite;
-  -ms-animation-timing-function: linear;
-  -o-animation-name: float-bob;
-  -o-animation-duration: 2s;
-  -o-animation-iteration-count: infinite;
-  -o-animation-timing-function: linear;
 }
-@-webkit-keyframes float-bob {
-  0% {
-    -webkit-transform: translateY(10px);
-    transform: translateY(-10px);
-  }
-  50% {
-    -webkit-transform: translateY(-5px);
-    transform: translateY(-5px);
-  }
-  100% {
-    -webkit-transform: translateY(-10px);
-    transform: translateY(-10px);
-  }
-}
-.heartbeat {
+/* .heartbeat {
   animation: heartbeat 1s infinite alternate;
-}
-@-webkit-keyframes heartbeat {
-  to {
-    -webkit-transform: scale(1.03);
-    transform: scale(1.03);
-  }
-}
+} */
 .rotateme {
   -webkit-animation-name: rotateme;
   animation-name: rotateme;
