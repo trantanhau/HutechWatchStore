@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Admin Product</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700"/>
+    <link rel="stylesheet" href="../../assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../assets/css/templatemo-style.css">
+  </head>
+
+  <body id="reportsPage">
+    <nav class="navbar navbar-expand-xl">
+        <div class="container h-100">
+          <a class="navbar-brand" href="#">
+            <h1 class="tm-site-title mb-0">ADMIN</h1>
+          </a>
+          <button class="navbar-toggler ml-auto mr-0" type="button">
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto h-100">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Products
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="#">Accounts
+                </a>
+              </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link d-block" href="./admin_login.html">
+                       <b>Logout</b>
+                    </a>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div class="container mt-5">
+      <div class="row tm-content-row">
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
+          <div class="tm-bg-primary-dark tm-block tm-block-products">
+            <div class="tm-product-table-container">
+              <table class="table table-hover tm-table-small tm-product-table">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">PRODUCT NAME</th>
+                    <th scope="col">PRICE</th>
+                    <th scope="col">IN STOCK</th>
+                    <th scope="col">SIZE</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"><input type="checkbox" /></th>
+                    <td class="tm-product-name">Pink Rolex</td>
+                    <td>305tr</td>
+                    <td>1</td>
+                    <td>42mm</td>
+                    <td>
+                      <a href="#" class="tm-product-delete-link">
+                        X
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <a
+              href="add-product.html"
+              class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
+            <button class="btn btn-primary btn-block text-uppercase">
+              Delete selected products
+            </button>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">
+          <div class="tm-bg-primary-dark tm-block tm-block-product-categories">
+            <h2 class="tm-block-title">BRAND</h2>
+            <div class="tm-product-table-container">
+              <table class="table tm-table-small tm-product-table">
+                <tbody>
+                  <tr>
+                    <td class="tm-product-name">Day-Date</td>
+                    <td class="text-center">
+                      <a href="#" class="tm-product-delete-link">
+                        X
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- table container -->
+            <button class="btn btn-primary btn-block text-uppercase mb-3">
+              Add new brand
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../../assets/js/jquery-1.12.1.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <script>
+      $(function() {
+        $(".tm-product-name").on("click", function() {
+          window.location.href = "edit-product.html";
+        });
+      });
+    </script>
+  </body>
+</html>
