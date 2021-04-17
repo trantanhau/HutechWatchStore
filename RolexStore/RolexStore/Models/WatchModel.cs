@@ -25,10 +25,6 @@ namespace RolexStore.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Cart>()
-                .Property(e => e.CustomerID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Cart>()
                 .HasMany(e => e.CartDetails)
                 .WithRequired(e => e.Cart)
                 .WillCascadeOnDelete(false);
@@ -46,10 +42,6 @@ namespace RolexStore.Models
                 .HasMany(e => e.Products)
                 .WithRequired(e => e.Collection)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Customer>()
-                .Property(e => e.CustomerID)
-                .IsUnicode(false);
 
             modelBuilder.Entity<Customer>()
                 .Property(e => e.Phone)

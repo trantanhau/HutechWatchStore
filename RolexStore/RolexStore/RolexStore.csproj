@@ -145,6 +145,10 @@
     <Compile Include="Migrations\202104171422251_FixedCardDetailsRelations.Designer.cs">
       <DependentUpon>202104171422251_FixedCardDetailsRelations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104171822426_ChangeCustomerIDToInt.cs" />
+    <Compile Include="Migrations\202104171822426_ChangeCustomerIDToInt.Designer.cs">
+      <DependentUpon>202104171822426_ChangeCustomerIDToInt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartDetail.cs" />
@@ -362,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104171422251_FixedCardDetailsRelations.resx">
       <DependentUpon>202104171422251_FixedCardDetailsRelations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104171822426_ChangeCustomerIDToInt.resx">
+      <DependentUpon>202104171822426_ChangeCustomerIDToInt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
