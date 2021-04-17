@@ -20,11 +20,11 @@ namespace RolexStore.Models
 
         public int? PaymentMethodID { get; set; }
 
-        public virtual PaymentMethod PaymentMethod { get; set; }
-
         public virtual CartState CartState { get; set; }
 
         public virtual Customer Customer { get; set; }
+
+        public virtual PaymentMethod PaymentMethod { get; set; }
 
         public virtual CartDetail CartDetail { get; set; }
     }

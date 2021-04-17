@@ -140,6 +140,10 @@
     <Compile Include="Migrations\202104170912287_AddTables.Designer.cs">
       <DependentUpon>202104170912287_AddTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104171238235_AddAccountType.cs" />
+    <Compile Include="Migrations\202104171238235_AddAccountType.Designer.cs">
+      <DependentUpon>202104171238235_AddAccountType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartDetail.cs" />
@@ -360,6 +364,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202104170912287_AddTables.resx">
       <DependentUpon>202104170912287_AddTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104171238235_AddAccountType.resx">
+      <DependentUpon>202104171238235_AddAccountType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

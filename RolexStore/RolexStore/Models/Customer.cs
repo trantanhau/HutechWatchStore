@@ -38,6 +38,8 @@ namespace RolexStore.Models
         [StringLength(11)]
         public string Phone { get; set; }
 
+        public int AccountType { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Carts { get; set; }
     }
