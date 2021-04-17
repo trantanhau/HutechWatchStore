@@ -36,5 +36,9 @@ namespace RolexStore.Controllers
             return View(vm);
 
         }
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }
