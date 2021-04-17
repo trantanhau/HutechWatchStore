@@ -32,7 +32,6 @@ A watch store website
 
 ## <h3>Trần Đức Huy: Back-end</h3>
 
-using something
 Features project:
 
  <h4>User</h4>

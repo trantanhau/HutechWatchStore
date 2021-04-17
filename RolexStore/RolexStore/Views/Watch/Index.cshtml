@@ -1,0 +1,133 @@
+﻿@model RolexStore.ViewModels.IndexViewModel
+
+<main>
+    <link rel="stylesheet" href="~/Content/nice-select.css">
+    <!-- Hero Area Start-->
+    <div class="slider-area ">
+        <div class="single-slider slider-height2 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center">
+                            <h2>Watch Shop</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero Area End-->
+    <!-- Latest Products Start -->
+    <section class="popular-items latest-padding">
+        <div class="container">
+            <div class="row product-btn justify-content-between mb-40">
+                <div class="properties__button">
+                    <!--Nav Button  -->
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"> Price high to low</a>
+                        </div>
+                    </nav>
+                    <!--End Nav Button  -->
+                </div>
+                <div class="select-this">
+                    <div class="select-itms">
+                        <select name="select" id="select1">
+                            @foreach (var item in Model.Sizes)
+                            {
+                                <option value=@item.SizeID>@item.SizeValue mm</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="select-this">
+                    <div class="select-itms">
+                        <select name="select" id="select1">
+                            <option value="">Brand</option>
+                            <option value="">Explorer</option>
+                            <option value="">Sea Dweller</option>
+                            <option value="">Submariner</option>
+                            <option value="">Datejust</option>
+                            <option value="">GMT-Master</option>
+                            <option value="">Day-Date</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="select-this">
+                    <div class="select-itms">
+                        <select name="select" id="select1">
+                            <option value="">Price</option>
+                            <option value="">Under 300</option>
+                            <option value="">300 to 699</option>
+                            <option value="">Over 700</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="row">
+                        @foreach (var item in Model.ProductList)
+                        {
+                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                                <div class="single-popular-items mb-50 text-center">
+                                    <div class="popular-img">
+                                        <a href=#>
+                                            <img src="@item.ProductImg" alt="">
+                                        </a>
+                                        <div class="img-cap">
+                                            <span>Add to cart</span>
+                                        </div>
+                                        <div class="favorit-items">
+                                            <span class="flaticon-heart"></span>
+                                        </div>
+                                    </div>
+                                    <div class="popular-caption">
+                                        <h3><a href="product_detail.html">@Html.DisplayFor(modelItem => item.CollectionName) - @Html.DisplayFor(modelItem => item.ProductID)</a></h3>
+                                        <span>@Html.DisplayFor(modelItem => item.Price)tr VND</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+<script src="~/Content/js/vendor/modernizr-3.5.0.min.js"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="~/Content/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="~/Content/js/popper.min.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+<!-- Jquery Mobile Menu -->
+<script src="../assets/js/jquery.slicknav.min.js"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="~/Content/js/owl.carousel.min.js"></script>
+<script src="~/Content/js/slick.min.js"></script>
+
+<!-- One Page, Animated-HeadLin -->
+<script src="~/Content/js/wow.min.js"></script>
+<script src="~/Content/js/animated.headline.js"></script>
+<script src="~/Content/js/jquery.magnific-popup.js"></script>
+
+<!-- Scroll up, nice-select, sticky -->
+<script src="~/Content/js/jquery.scrollUp.min.js"></script>
+<script src="~/Content/js/jquery.nice-select.min.js"></script>
+<script src="~/Content/js/jquery.sticky.js"></script>
+
+<!-- contact js -->
+<script src="~/Content/js/contact.js"></script>
+<script src="~/Content/js/jquery.form.js"></script>
+<script src="~/Content/js/jquery.validate.min.js"></script>
+<script src="~/Content/js/mail-script.js"></script>
+<script src="~/Content/js/jquery.ajaxchimp.min.js"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script src="~/Content/js/plugins.js"></script>
+<script src="~/Content/js/main.js"></script>
+
+@Scripts.Render("~/Content/js")
