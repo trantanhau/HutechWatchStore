@@ -29,8 +29,9 @@ namespace RolexStore.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Cart>()
-                .HasOptional(e => e.CartDetail)
-                .WithRequired(e => e.Cart);
+                .HasMany(e => e.CartDetails)
+                .WithRequired(e => e.Cart)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CartDetail>()
                 .Property(e => e.ProductID)

@@ -9,6 +9,12 @@ namespace RolexStore.Models
     [Table("Cart")]
     public partial class Cart
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Cart()
+        {
+            CartDetails = new HashSet<CartDetail>();
+        }
+
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int CartID { get; set; }
 
@@ -26,6 +32,7 @@ namespace RolexStore.Models
 
         public virtual PaymentMethod PaymentMethod { get; set; }
 
-        public virtual CartDetail CartDetail { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CartDetail> CartDetails { get; set; }
     }
 }

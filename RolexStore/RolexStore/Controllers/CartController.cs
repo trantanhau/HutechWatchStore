@@ -18,12 +18,12 @@ namespace RolexStore.Controllers
         }
         // GET: Cart
         //Cart button
-        public ActionResult Index(string customerID)
+        public ActionResult Index()
         {
-            currentCart = _db.Carts.Where(s => s.CustomerID == customerID && s.CartState.CStateID == 1).FirstOrDefault<Cart>();
+            currentCart = _db.Carts.Where(s => s.CustomerID == "A1" && s.CartState.CStateID == 1).FirstOrDefault<Cart>();
             CartViewModel cvm = new CartViewModel();
 
-            var cardDetail = _db.CartDetails.Where(s => s.Cart == currentCart).ToList<CartDetail>();
+            var cardDetail = _db.CartDetails.Where(s => s.Cart.CartID == currentCart.CartID).ToList<CartDetail>();
 
             if (cardDetail == null)
             {
@@ -34,6 +34,7 @@ namespace RolexStore.Controllers
                 CartProductViewModel cartProductViewModel = new CartProductViewModel
                 {
                     ProductID = cd.ProductID,
+                    CollectionName = cd.Product.Collection.CollectionName,
                     BuyingQuantity = cd.Quantity,
                     Price = cd.Product.Price
                 };

@@ -144,6 +144,10 @@
     <Compile Include="Migrations\202104171238235_AddAccountType.Designer.cs">
       <DependentUpon>202104171238235_AddAccountType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104171422251_FixedCardDetailsRelations.cs" />
+    <Compile Include="Migrations\202104171422251_FixedCardDetailsRelations.Designer.cs">
+      <DependentUpon>202104171422251_FixedCardDetailsRelations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartDetail.cs" />
@@ -344,11 +348,11 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\css\" />
-    <Folder Include="Views\Cart\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -367,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104171238235_AddAccountType.resx">
       <DependentUpon>202104171238235_AddAccountType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104171422251_FixedCardDetailsRelations.resx">
+      <DependentUpon>202104171422251_FixedCardDetailsRelations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

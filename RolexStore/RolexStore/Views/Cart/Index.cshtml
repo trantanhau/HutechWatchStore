@@ -1,0 +1,40 @@
+﻿@model RolexStore.ViewModels.CartViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>@Html.LabelFor(Model => Model.ProductVm[0].ProductID)</th>
+        <th>@Html.LabelFor(Model => Model.ProductVm[0].CollectionName)</th>
+        <th>@Html.LabelFor(Model => Model.ProductVm[0].BuyingQuantity)</th>
+        <th>@Html.LabelFor(Model => Model.ProductVm[0].Price)</th>
+    </tr>
+
+
+    @foreach (var item in Model.ProductVm)
+    {
+        <tr>
+            <td>
+                @item.ProductID
+            </td>
+            <td>
+                @item.CollectionName
+            </td>
+            <td>
+                @item.BuyingQuantity
+            </td>
+            <td>
+                @item.Price
+            </td>
+        </tr>
+    }
+
+</table>

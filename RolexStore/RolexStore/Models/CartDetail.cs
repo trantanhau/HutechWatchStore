@@ -10,10 +10,12 @@ namespace RolexStore.Models
     public partial class CartDetail
     {
         [Key]
+        [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int CartID { get; set; }
 
-        [Required]
+        [Key]
+        [Column(Order = 1)]
         [StringLength(50)]
         public string ProductID { get; set; }
 
