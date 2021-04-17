@@ -477,7 +477,7 @@ input:focus::-moz-placeholder {
   right: 31px;
   bottom: 18px;
   color: #fff;
-  font-size: 20px;
+  font-size: 20px; 
   text-align: center;
   border-radius: 50%;
   line-height: 48px;
