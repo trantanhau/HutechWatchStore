@@ -1,1 +1,1 @@
-<h1>This is a layout using HTML/CSS</h1>
+<h1>Just a layout</h1>
