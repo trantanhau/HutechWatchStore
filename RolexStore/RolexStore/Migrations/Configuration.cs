@@ -208,7 +208,7 @@ namespace RolexStore.Migrations
             Cart cart = new Cart()
             {
                 CStateID = 1,
-                CustomerID = 1000,
+                CustomerID = 1,
             };
             context.Carts.AddOrUpdate(p => p.CartID, cart);
             context.SaveChanges();
@@ -217,19 +217,19 @@ namespace RolexStore.Migrations
             {
                 new CartDetail()
                 {
-                    CartID = 1,
+                    CartID = 3,
                     ProductID = "124160",
                     Quantity = 1,
                 },
                 new CartDetail()
                 {
-                    CartID = 1,
+                    CartID = 3,
                     ProductID = "125062",
                     Quantity = 2,
                 },
                 new CartDetail()
                 {
-                    CartID = 1,
+                    CartID = 3,
                     ProductID = "121060",
                     Quantity = 2,
                 },

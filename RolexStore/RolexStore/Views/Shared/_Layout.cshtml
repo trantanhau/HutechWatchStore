@@ -55,7 +55,16 @@
                                         <span class="flaticon-user">Search</span>
                                     </div>
                                 </li>
-                                <li> <a href="./pages/login.html"><span class="flaticon-user">Login</span></a></li>
+                                @if (Session["user"] != null)
+                                {
+                                    <li><a href="#" class=""><span>hello @Session["username"]</span></a></li>
+                                    <li><a href="/Account/LogOut"><span>Log Out</span></a></li>
+                                }
+                                else
+                                {
+                                    <li> <a href="/Account/Login"><span class="flaticon-user">Login</span></a></li>
+
+                                }
                                 <li><a href="@Url.Action("Index", "Cart")"><span class="flaticon-shopping-cart">Cart</span></a> </li>
                             </ul>
                         </div>

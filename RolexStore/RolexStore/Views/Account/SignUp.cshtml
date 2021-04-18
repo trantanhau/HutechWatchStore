@@ -1,0 +1,96 @@
+﻿@model RolexStore.Models.Customer
+@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!doctype html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="slider-area ">
+        <div class="single-slider slider-height2 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center">
+                            <h2>Sign Up</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="login_part section_padding ">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6">
+                    <div class="login_part_text text-center">
+                        <div class="login_part_text_iner">
+                            <h2>Already have account ?</h2>
+                            <p>What are you waiting for - Get back to sign in</p>
+                            <a href="/Account/Login" class="btn_3">Sign In</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="login_part_form">
+                        <div class="login_part_form_iner">
+                            <h3>
+                                New Member ?<br>
+                                Please Sign Up now
+                            </h3>
+                            <form class="row contact_form" action="" method="post" novalidate="novalidate">
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="email" class="form-control" id="Email" name="Email" value=""
+                                           placeholder="Email">
+                                </div>
+                                <br />
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="password" class="form-control" id="Password" name="Password" value=""
+                                           placeholder="Password">
+                                </div>
+                                <br />
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                @*<div class="col-md-12 form-group p_star">
+                                        <input type="password" class="form-control" id="name" name="Password" value=""
+                                               placeholder="Confirm Password">
+                                    </div>*@
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="CustomerName" name="CustomerName" value=""
+                                           placeholder="Name">
+                                </div>
+                                <br />
+                                @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="Address" name="Address" value=""
+                                           placeholder="Address">
+                                </div>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="Phone" name="Phone" value=""
+                                           placeholder="Phone">
+                                </div>
+                                <br />
+                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                <div class="col-md-12 form-group">
+                                    <button type="submit" value="SignUp" class="btn_3">
+                                        Sign Up
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
+

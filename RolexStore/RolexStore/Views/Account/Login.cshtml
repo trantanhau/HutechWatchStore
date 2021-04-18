@@ -1,0 +1,82 @@
+﻿@model RolexStore.Models.Customer
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đăng nhập vào website</title>
+    <meta charset="UTF-8">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <main>
+        <div class="slider-area ">
+            <div class="single-slider slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap text-center">
+                                <h2>Login</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="login_part section_padding ">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="login_part_text text-center">
+                            <div class="login_part_text_iner">
+                                <h2>New to our Shop?</h2>
+                                <p>
+                                    There are advances being made in science and technology
+                                    everyday, and a good example of this is the
+                                </p>
+                                <a href="~/Account/SignUp" class="btn_3">Create an Account</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="login_part_form">
+                            <div class="login_part_form_iner">
+                                <h3>
+                                    Welcome Back ! <br>
+                                    Please Sign in now
+                                </h3>
+                                <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+                                    <div class="col-md-12 form-group p_star">
+                                        <input type="email" class="form-control" id="email" name="email"
+                                               placeholder="Email">
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-12 form-group p_star">
+                                        <input type="password" class="form-control" id="Password" name="Password"
+                                               placeholder="Password">
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <button type="submit" value="Login" class="btn_3">
+                                            log in
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
+
