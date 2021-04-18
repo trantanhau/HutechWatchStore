@@ -241,9 +241,9 @@ namespace RolexStore.Controllers
             if (cartToCancel != null)
             {
                 _db.Carts.Remove(cartToCancel);
-                return RedirectToAction("Order", "Cart");
+                return RedirectToAction("Index", "Watch");
             }
-            return RedirectToAction("Index", "Watch");
+                return RedirectToAction("Order", "Cart");
         }
         private List<CartDetail> GetCardItemsFromCardID(int cardID)
         {

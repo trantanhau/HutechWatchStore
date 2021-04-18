@@ -70,11 +70,16 @@ namespace RolexStore.Controllers
             return View(vm);
 
         }
-        //[HttpPost]
-        //public ActionResult Index(IndexViewModel ivm)
-        //{
 
-        //}
+        public ActionResult Details(string productID)
+        {
+            Product product = _db.Products.Where(s => s.ProductID == productID).FirstOrDefault<Product>();
+            if (product == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(product);
+        }
         public ActionResult About()
         {
             return View();

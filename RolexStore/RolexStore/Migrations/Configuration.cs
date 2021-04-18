@@ -190,52 +190,7 @@ namespace RolexStore.Migrations
             productList.ForEach(s => context.Products.AddOrUpdate(p => p.ProductID, s));
             context.SaveChanges();
 
-
-            //add initial Customer
-            Customer customer = new Customer()
-            {
-                CustomerName = "Dango",
-                AccountType = 2,
-                Address = "153 Dingleton",
-                Email = "alex@gmail.com",
-                Password = "1234",
-                Phone = "03131"
-            };
-            context.Customers.AddOrUpdate(p => p.CustomerID, customer);
-            context.SaveChanges();
-
-            // Add New Cart
-            Cart cart = new Cart()
-            {
-                CStateID = 1,
-                CustomerID = 1,
-            };
-            context.Carts.AddOrUpdate(p => p.CartID, cart);
-            context.SaveChanges();
-
-            List<CartDetail> cartDetails = new List<CartDetail>
-            {
-                new CartDetail()
-                {
-                    CartID = 3,
-                    ProductID = "124160",
-                    Quantity = 1,
-                },
-                new CartDetail()
-                {
-                    CartID = 3,
-                    ProductID = "125062",
-                    Quantity = 2,
-                },
-                new CartDetail()
-                {
-                    CartID = 3,
-                    ProductID = "121060",
-                    Quantity = 2,
-                },
-            };
-            cartDetails.ForEach(s => context.CartDetails.AddOrUpdate(p => new { p.ProductID, p.CartID }, s));
-            context.SaveChanges();
+           
 
             base.Seed(context);
         }
