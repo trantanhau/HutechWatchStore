@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using RolexStore.Models;
 using RolexStore.Common;
+using RolexStore.DAL;
 
 namespace RolexStore.Controllers
 {
@@ -43,7 +44,6 @@ namespace RolexStore.Controllers
                 Session["name"] = a.CustomerName;
                 Session["username"] = a.CustomerName;
                 Session["acc_id"] = a.CustomerID;
-                //Session["message"] = "Đăng nhập thành công";
                 ViewBag.message = "Login succesfully!";
                 return RedirectToAction("Index", "Watch");
             }

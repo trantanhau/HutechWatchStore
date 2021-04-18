@@ -158,13 +158,14 @@
     <Compile Include="Models\CartState.cs" />
     <Compile Include="Models\Collection.cs" />
     <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\Account.cs" />
+    <Compile Include="DAL\AccountQuery.cs" />
     <Compile Include="Models\PaymentMethod.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Size.cs" />
     <Compile Include="Models\WatchModel.cs" />
     <Compile Include="Models\WatchType.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
+    <Compile Include="ViewModels\CheckoutViewModel.cs" />
     <Compile Include="ViewModels\IndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

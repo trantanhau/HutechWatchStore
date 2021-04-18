@@ -14,6 +14,7 @@ namespace RolexStore.ViewModels
         }
         public List<CartProductViewModel> ProductVm { get; set; }
         public int CartID { get; set; }
+        public int Total { get; set; }
     }
 
     public class CartProductViewModel

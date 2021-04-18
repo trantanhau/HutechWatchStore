@@ -29,6 +29,7 @@ namespace RolexStore.Controllers
             CartViewModel cvm = new CartViewModel();
             cvm.CartID = currentCart.CartID;
             var cardDetail = _db.CartDetails.Where(s => s.Cart.CartID == currentCart.CartID).ToList<CartDetail>();
+            cvm.Total = 0;
             cardDetail.ForEach(cd =>
             {
                 CartProductViewModel cartProductViewModel = new CartProductViewModel
@@ -38,6 +39,8 @@ namespace RolexStore.Controllers
                     BuyingQuantity = cd.Quantity,
                     Price = cd.Product.Price
                 };
+                cvm.Total += cd.Product.Price * cd.Quantity;
+
                 cvm.ProductVm.Add(cartProductViewModel);
             });
 

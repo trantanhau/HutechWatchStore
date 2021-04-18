@@ -30,39 +30,27 @@
                     </nav>
                     <!--End Nav Button  -->
                 </div>
-                <div class="select-this">
-                    <div class="select-itms">
-                        <select name="select" id="select1">
-                            @foreach (var item in Model.Sizes)
-                            {
-                                <option value=@item.SizeID>@item.SizeValue mm</option>
-                            }
-                        </select>
+                @using (Html.BeginForm("Index", "Watch", FormMethod.Post))
+                {
+                    @Html.HiddenFor(model => Model.ProductList)
+                    <div class="select-this">
+                        <div class="select-itms">
+                            @Html.DropDownListFor(x => x.SelectedSizeID, Model.Sizes, new { @class = "select-itms" })
+                        </div>
                     </div>
-                </div>
-                <div class="select-this">
-                    <div class="select-itms">
-                        <select name="select" id="select1">
-                            <option value="">Brand</option>
-                            <option value="">Explorer</option>
-                            <option value="">Sea Dweller</option>
-                            <option value="">Submariner</option>
-                            <option value="">Datejust</option>
-                            <option value="">GMT-Master</option>
-                            <option value="">Day-Date</option>
-                        </select>
+                    <div class="select-this">
+                        <div class="select-itms">
+                            @Html.DropDownListFor(x => x.SelectedCollectionID, Model.Collections, new { @class = "select-itms" })
+                        </div>
                     </div>
-                </div>
-                <div class="select-this">
-                    <div class="select-itms">
-                        <select name="select" id="select1">
-                            <option value="">Price</option>
-                            <option value="">Under 300</option>
-                            <option value="">300 to 699</option>
-                            <option value="">Over 700</option>
-                        </select>
+                    <div class="select-this">
+                        <div class="select-itms">
+                            @Html.DropDownListFor(x => x.SelectedPriceID, Model.Prices, new { @class = "select-itms" })
+                        </div>
                     </div>
-                </div>
+                    <input type="submit" value="Apply Filter" class="btn btn-success" />
+                }
+
             </div>
 
             <div class="tab-content" id="nav-tabContent">
@@ -73,7 +61,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                                 <div class="single-popular-items mb-50 text-center">
                                     <div class="popular-img">
-                                        <img src="@item.ProductImg" alt=""/>
+                                        <img src="@item.ProductImg" alt="" />
                                         <div class="img-cap">
                                             <span>@Html.ActionLink("Add to cart", "AddFromIndex", "Cart", new { productID = item.ProductID }, "")</span>
                                         </div>
