@@ -13,10 +13,12 @@ namespace RolexStore.ViewModels
             ProductVm = new List<CartProductViewModel>();
         }
         public List<CartProductViewModel> ProductVm { get; set; }
+        public int CartID { get; set; }
     }
 
     public class CartProductViewModel
     {
+
         [Display(Name = "ID Sản phẩm")]
         public string ProductID { get; set; }
         [Display(Name = "Tên bộ sưu tập")]

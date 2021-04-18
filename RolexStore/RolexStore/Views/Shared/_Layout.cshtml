@@ -41,7 +41,7 @@
                                     <ul id="navigation">
                                         <li><a href="../index.html">Home</a></li>
                                         <li>
-                                            <a href="shop.html">shop</a>
+                                            @Html.ActionLink("Shop", "Index", "Watch")
                                             <ul class="submenu">
                                                 <li><a href="#">Men</a></li>
                                                 <li><a href="#">Women</a></li>
@@ -53,7 +53,7 @@
                                             <a href="#">Pages</a>
                                             <ul class="submenu">
                                                 <li><a href="login.html">Login</a></li>
-                                                <li><a href="cart.html">Cart</a></li>
+                                                <li>@Html.ActionLink("Cart", "Index", "Cart")</li>
                                                 <li><a href="checkout.html">Product Checkout</a></li>
                                             </ul>
                                         </li>
@@ -70,7 +70,7 @@
                                         </div>
                                     </li>
                                     <li> <a href="./pages/login.html"><span class="#">Login</span></a></li>
-                                    <li><a href="./pages/cart.html"><span class="#">Cart</span></a> </li>
+                                    <li>@Html.ActionLink("Cart", "Index", "Cart")</li>
                                 </ul>
                             </div>
                         </div>
