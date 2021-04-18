@@ -12,16 +12,23 @@ namespace RolexStore.Controllers
     {
         WatchModel _db;
         Cart currentCart;
+        Customer currentCustomer;
         public CartController()
         {
             _db = new WatchModel();
-            currentCart = GetCurrentCart();
+            
         }
         // GET: Cart
         //Cart button
         public ActionResult Index()
         {
-            currentCart = GetCurrentCart();
+            currentCustomer = Session["user"] as Customer;
+            if (currentCustomer == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            currentCart = GetCurrentCart(currentCustomer.CustomerID);
             if (currentCart == null)
             {
                 return RedirectToAction("Index", "Watch");
@@ -51,6 +58,14 @@ namespace RolexStore.Controllers
         [HttpPost, ActionName("Update")]
         public ActionResult UpdateCartFromCartPage(CartViewModel cvm)
         {
+            currentCustomer = Session["user"] as Customer;
+            if (currentCustomer == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            currentCart = GetCurrentCart(currentCustomer.CustomerID);
+
             CartViewModel newCvm = new CartViewModel { CartID = cvm.CartID };
             List<CartDetail> cardItems = GetCardItemsFromCardID(currentCart.CartID);
             cvm.ProductVm.ForEach(item =>
@@ -80,7 +95,12 @@ namespace RolexStore.Controllers
         }
         public ActionResult AddFromIndex(string productID)
         {
-            currentCart = GetCurrentCart();
+            currentCustomer = Session["user"] as Customer;
+            if (currentCustomer == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            currentCart = GetCurrentCart(currentCustomer.CustomerID);
             if (currentCart != null)
             {
 
@@ -106,7 +126,7 @@ namespace RolexStore.Controllers
             {
                 Cart newCart = new Cart()
                 {
-                    CustomerID = 1001,
+                    CustomerID = currentCustomer.CustomerID,
                     CStateID = 1,
                 };
 
@@ -127,7 +147,103 @@ namespace RolexStore.Controllers
             //{
             //    return View();
             //}
+        }
 
+        public ActionResult Checkout()
+        {
+            currentCustomer = Session["user"] as Customer;
+            if (currentCustomer == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            currentCart = GetCurrentCart(currentCustomer.CustomerID);
+            if (currentCart == null)
+            {
+                return RedirectToAction("Index", "Watch");
+            }
+            CheckoutViewModel cvm = new CheckoutViewModel
+            {
+                Customer = currentCustomer,
+                CartID = currentCart.CartID
+            };
+            var cardDetail = _db.CartDetails.Where(s => s.Cart.CartID == currentCart.CartID).ToList<CartDetail>();
+            
+            cvm.Total = 0;
+            cardDetail.ForEach(cd =>
+            {
+                CartProductViewModel cartProductViewModel = new CartProductViewModel
+                {
+                    ProductID = cd.ProductID,
+                    CollectionName = cd.Product.Collection.CollectionName,
+                    BuyingQuantity = cd.Quantity,
+                    Price = cd.Product.Price
+                };
+                cvm.Total += cd.Product.Price * cd.Quantity;
+
+                cvm.ProductVm.Add(cartProductViewModel);
+
+            });
+
+            return View(cvm);
+
+        }
+        [HttpPost]
+        public ActionResult Order(int cartID)
+        {
+            var cart = _db.Carts.Where(s => s.CartID == cartID).FirstOrDefault<Cart>();
+            cart.CStateID = 2;
+            _db.SaveChanges();
+            return RedirectToAction("Order");
+
+        }
+        public ActionResult Order()
+        {
+            currentCustomer = Session["user"] as Customer;
+            if (currentCustomer == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var cart = _db.Carts.Where(s => s.CStateID == 2).FirstOrDefault<Cart>();
+            if (cart == null)
+            {
+                return RedirectToAction("Index", "Watch");
+            }
+
+            _db.SaveChanges();
+
+            OrderViewModel ovm = new OrderViewModel();
+            ovm.CartID = cart.CartID;
+            ovm.CartStatus = cart.CStateID == 2 ? "ĐANG ĐƯỢC GIAO" : (cart.CStateID == 3 ? "ĐÃ GIAO" : "ĐÃ HỦY"); 
+            var cardDetail = _db.CartDetails.Where(s => s.Cart.CartID == cart.CartID).ToList<CartDetail>();
+            ovm.Total = 0;
+            cardDetail.ForEach(cd =>
+            {
+                CartProductViewModel cartProductViewModel = new CartProductViewModel
+                {
+                    ProductID = cd.ProductID,
+                    CollectionName = cd.Product.Collection.CollectionName,
+                    BuyingQuantity = cd.Quantity,
+                    Price = cd.Product.Price
+                };
+                ovm.Total += cd.Product.Price * cd.Quantity;
+
+                ovm.ProductVm.Add(cartProductViewModel);
+            });
+
+            // TODO: Create view
+            return View(ovm);
+        }
+
+        public ActionResult Cancel(int cartID)
+        {
+            Cart cartToCancel = _db.Carts.Where(s => s.CartID == cartID).FirstOrDefault<Cart>();
+            if (cartToCancel != null)
+            {
+                _db.Carts.Remove(cartToCancel);
+                return RedirectToAction("Order", "Cart");
+            }
+            return RedirectToAction("Index", "Watch");
         }
         private List<CartDetail> GetCardItemsFromCardID(int cardID)
         {
@@ -135,9 +251,9 @@ namespace RolexStore.Controllers
             return cardItems;
         }
 
-        private Cart GetCurrentCart()
+        private Cart GetCurrentCart(int customerID)
         {
-            return _db.Carts.Where(s => s.CustomerID == 1001 && s.CartState.CStateID == 1).FirstOrDefault<Cart>();
+            return _db.Carts.Where(s => s.CustomerID == customerID && s.CartState.CStateID == 1).FirstOrDefault<Cart>();
         }
         public ActionResult UpdateQuantity(string cart_id, string product_id)
         {
@@ -145,6 +261,11 @@ namespace RolexStore.Controllers
             cartDetail.Quantity++;
             _db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public Customer GetCurrentCustomer(int customerID)
+        {
+            return _db.Customers.Where(s => s.CustomerID == customerID).FirstOrDefault<Customer>();
         }
     }
 }

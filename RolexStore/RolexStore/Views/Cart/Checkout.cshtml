@@ -1,0 +1,122 @@
+﻿@model RolexStore.ViewModels.CheckoutViewModel
+
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<main>
+    <!-- Hero Area Start-->
+    <div class="slider-area ">
+        <div class="single-slider slider-height2 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center">
+                            <h2>Checkout</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--================Checkout Area =================-->
+    <section class="checkout_area section_padding">
+        <div class="container">
+            <div class="billing_details">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h3>Billing Details</h3>
+
+                        <div class="col-md-6 form-group p_star">
+                            <p>Name @Model.Customer.CustomerName</p>
+                        </div>
+                        <div class="col-md-6 form-group p_star">
+                            <p>Deliver Address @Model.Customer.Address</p>
+                        </div>
+                        <div class="col-md-6 form-group p_star">
+                            <p>Phone number @Model.Customer.Phone</p>
+                        </div>
+                        <div class="col-md-6 form-group p_star">
+                            <p>Email @Model.Customer.Email</p>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <textarea class="form-control" name="message" id="message" rows="1"
+                                      placeholder="Order Notes"></textarea>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="order_box">
+                            <h2>Your Order</h2>
+                            <ul class="list">
+                                <li>
+                                    <a href="#">
+                                        Product
+                                        <span>Total</span>
+                                    </a>
+                                </li>
+                                @for (int i = 0; i < Model.ProductVm.Count; i++)
+                                {
+                                    <li>
+                                        <a href="#">
+                                            @Model.ProductVm[i].CollectionName - @Model.ProductVm[i].ProductID
+                                            <span class="middle">x @Model.ProductVm[i].BuyingQuantity</span>
+                                            <span class="last">@Model.ProductVm[i].Price tr VND</span>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                            <ul class="list list_2">
+                                <li>
+                                    <a href="#">
+                                        Subtotal
+                                        <span>@Model.Total tr VND</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Shipping
+                                        <span> 0 VND</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Total
+                                        <span>@Model.Total tr VND</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="payment_item">
+                                <div class="radion_btn">
+                                    <input type="radio" id="f-option5" name="selector" />
+                                    <label for="f-option5">Cash</label>
+                                    <div class="check"></div>
+                                </div>
+                            </div>
+                            <div class="payment_item active">
+                                <div class="radion_btn">
+                                    <input type="radio" id="f-option6" name="selector" />
+                                    <label for="f-option6">Paypal</label>
+                                    <div class="check"></div>
+                                </div>
+                            </div>
+                            <div class="payment_item active">
+                                <div class="radion_btn">
+                                    <input type="radio" id="f-option7" name="selector" />
+                                    <label for="f-option7">Debit or Credit Card</label>
+                                    <div class="check"></div>
+                                </div>
+                            </div>
+                            @using (Html.BeginForm("Order", "Cart", new { cartID = Model.CartID }))
+                            {
+                                <input class="btn_3" type="submit" value="BUY" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

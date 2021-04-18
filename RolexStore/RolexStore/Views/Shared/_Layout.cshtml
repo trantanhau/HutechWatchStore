@@ -53,7 +53,8 @@
                                             <ul class="submenu">
                                                 <li><a href="login.html">Login</a></li>
                                                 <li>@Html.ActionLink("Cart", "Index", "Cart")</li>
-                                                <li><a href="checkout.html">Product Checkout</a></li>
+                                                <li><a href="@Url.Action("Checkout", "Cart")">Product Checkout</a></li>
+                                                <li><a href="@Url.Action("Order", "Cart")">Your Order</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">Contact</a></li>
@@ -69,7 +70,7 @@
                                     </li>
                                 @if (Session["user"] != null)
                                 {
-                                    <li><a href="#" class=""><span>hello @Session["username"]</span></a></li>
+                                    <li><a href="#" class=""><span>Hello - @Session["username"]</span></a></li>
                                     <li><a href="/Account/LogOut"><span>Log Out</span></a></li>
                                 }
                                 else

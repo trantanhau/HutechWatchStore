@@ -1,0 +1,91 @@
+﻿@model RolexStore.ViewModels.OrderViewModel
+
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="slider-area ">
+        <div class="single-slider slider-height2 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center">
+                            <h2>Cart List</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="cart_area section_padding">
+        <div class="container">
+            <div class="cart_inner">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">@Html.LabelFor(Model => Model.ProductVm[0].CollectionName)</th>
+                                <th scope="col">@Html.LabelFor(Model => Model.ProductVm[0].Price)</th>
+                                <th scope="col">@Html.LabelFor(Model => Model.ProductVm[0].BuyingQuantity)</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.ProductVm.Count; i++)
+                            {
+                            <tr>
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="../assets/img/product/popular1.png" alt="" />
+                                        </div>
+                                        <div class="media-body">
+                                            <p>@Model.ProductVm[i].CollectionName</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>@Model.ProductVm[i].Price</h5>
+                                </td>
+                                <td>
+                                    <div class="product_count">
+                                        @Model.ProductVm[i].BuyingQuantity
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>@(Model.ProductVm[i].Price*Model.ProductVm[i].BuyingQuantity)tr VND</h5>
+                                </td>
+                            </tr>
+                            }
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <h5>Subtotal</h5>
+                                </td>
+                                <td>
+                                    <h5>@Model.Total tr VND</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Order status: @Model.CartStatus</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="checkout_btn_inner float-right">
+                        <a class="btn_1" href="@Url.Action("Index", "Watch")">Continue Shopping</a>
+                        @using (Html.BeginForm("Cancel", "Cart", new { cartID = Model.CartID }))
+                        {
+                            <input class="btn_1" type="submit" value="Cancel Order" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
