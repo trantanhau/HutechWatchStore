@@ -15,12 +15,9 @@ namespace RolexStore.Models
             CartDetails = new HashSet<CartDetail>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int CartID { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string CustomerID { get; set; }
+        public int CustomerID { get; set; }
 
         public int CStateID { get; set; }
 

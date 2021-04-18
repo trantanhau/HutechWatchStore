@@ -28,7 +28,7 @@
                                 <ul id="navigation">
                                     <li><a href="index.html">Home</a></li>
                                     <li>
-                                        <a href="~/Watch/Index">Shop</a>
+                                        @Html.ActionLink("Shop", "Index", "Watch")
                                         <ul class="submenu">
                                             <li><a href="#">Men</a></li>
                                             <li><a href="#">Women</a></li>
@@ -39,11 +39,11 @@
                                         <a href="#">Pages</a>
                                         <ul class="submenu">
                                             <li><a href="./pages/login.html">Login</a></li>
-                                            <li><a href="./pages/cart.html">Cart</a></li>
+                                            <li>@Html.ActionLink("Cart", "Index", "Cart")</li>
                                             <li><a href="./pages/checkout.html">Product Checkout</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="~/Watch/Contact">Contact</a></li>
+                                    <li>@Html.ActionLink("Contact", "About", "Watch")</li>
                                 </ul>
                             </nav>
                         </div>
@@ -56,7 +56,7 @@
                                     </div>
                                 </li>
                                 <li> <a href="./pages/login.html"><span class="flaticon-user">Login</span></a></li>
-                                <li><a href="./pages/cart.html"><span class="flaticon-shopping-cart">Cart</span></a> </li>
+                                <li><a href="@Url.Action("Index", "Cart")"><span class="flaticon-shopping-cart">Cart</span></a> </li>
                             </ul>
                         </div>
                     </div>

@@ -10,6 +10,7 @@ namespace RolexStore.Controllers
 {
     public class CartController : Controller
     {
+        private string CartSession = "CartSession";
         WatchModel _db;
         Cart currentCart;
         public CartController()
@@ -20,15 +21,14 @@ namespace RolexStore.Controllers
         //Cart button
         public ActionResult Index()
         {
-            currentCart = _db.Carts.Where(s => s.CustomerID == "A1" && s.CartState.CStateID == 1).FirstOrDefault<Cart>();
-            CartViewModel cvm = new CartViewModel();
-
-            var cardDetail = _db.CartDetails.Where(s => s.Cart.CartID == currentCart.CartID).ToList<CartDetail>();
-
-            if (cardDetail == null)
+            currentCart = GetCurrentCart();
+            if (currentCart == null)
             {
                 return View();
             }
+            CartViewModel cvm = new CartViewModel();
+
+            var cardDetail = _db.CartDetails.Where(s => s.Cart.CartID == currentCart.CartID).ToList<CartDetail>();
             cardDetail.ForEach(cd =>
             {
                 CartProductViewModel cartProductViewModel = new CartProductViewModel
@@ -44,10 +44,11 @@ namespace RolexStore.Controllers
             // TODO: Create view
             return View(cvm);
         }
+
         [HttpPost, ActionName("Update")]
         public ActionResult UpdateCartFromCartPage(CartViewModel cvm)
         {
-            var cardItems = GetCardItemsFromCardID(currentCart.CartID);
+            List<CartDetail> cardItems = GetCardItemsFromCardID(currentCart.CartID);
             cvm.ProductVm.ForEach(item =>
             {
                 var cartItem = cardItems.Where(s => s.ProductID == item.ProductID).FirstOrDefault<CartDetail>();
@@ -65,21 +66,73 @@ namespace RolexStore.Controllers
 
             if (GetCardItemsFromCardID(currentCart.CartID).Count == 0)
             {
-                return View();
+                _db.Carts.Remove(currentCart);
+                _db.SaveChanges();
+                return View("Index", "Watch");
             }
 
             return View(cvm);
         }
+        public ActionResult AddFromIndex(string productID)
+        {
+            currentCart = GetCurrentCart();
+            if (currentCart != null)
+            {
 
-        //public ActionResult UpdateCartFromProductDetail(ProductDetailViewModel pdvm)
-        //{
-        //    return View();
-        //}
+                CartDetail cartDetail = currentCart.CartDetails.Where(s => s.ProductID == productID).FirstOrDefault<CartDetail>();
+                if (cartDetail != null)
+                {
+                    cartDetail.Quantity++;
+                    _db.SaveChanges();
+                }
+                else
+                {
+                    CartDetail cd = new CartDetail()
+                    {
+                        ProductID = productID,
+                        CartID = currentCart.CartID,
+                        Quantity = 1
+                    };
+                    currentCart.CartDetails.Add(cd);
+                    _db.SaveChanges();
+                }
+            }
+            else
+            {
+                Cart newCart = new Cart()
+                {
+                    CustomerID = 1001,
+                    CStateID = 1,
+                };
 
+                CartDetail cd = new CartDetail()
+                {
+                    ProductID = productID,
+                    CartID = newCart.CartID,
+                    Quantity = 1
+                };
+                newCart.CartDetails.Add(cd);
+                _db.Carts.Add(newCart);
+                _db.SaveChanges();
+            }
+                return RedirectToAction("Index", "Watch");
+
+
+            //public ActionResult UpdateCartFromProductDetail(ProductDetailViewModel pdvm)
+            //{
+            //    return View();
+            //}
+
+        }
         private List<CartDetail> GetCardItemsFromCardID(int cardID)
         {
             var cardItems = _db.CartDetails.Where(s => s.CartID == cardID).ToList<CartDetail>();
             return cardItems;
+        }
+
+        private Cart GetCurrentCart()
+        {
+            return _db.Carts.Where(s => s.CustomerID == 1000 && s.CartState.CStateID == 1).FirstOrDefault<Cart>();
         }
     }
 }

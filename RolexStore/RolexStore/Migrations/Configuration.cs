@@ -194,7 +194,6 @@ namespace RolexStore.Migrations
             //add initial Customer
             Customer customer = new Customer()
             {
-                CustomerID = "A1",
                 CustomerName = "Dango",
                 AccountType = 2,
                 Address = "153 Dingleton",
@@ -208,9 +207,8 @@ namespace RolexStore.Migrations
             // Add New Cart
             Cart cart = new Cart()
             {
-                CartID = 1,
                 CStateID = 1,
-                CustomerID = "A1",
+                CustomerID = 1000,
             };
             context.Carts.AddOrUpdate(p => p.CartID, cart);
             context.SaveChanges();
