@@ -4,172 +4,94 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @*@Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")*@
-    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/Content/assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/Content/assets/css/slicknav.css">
-    <link rel="stylesheet" href="~/Content/assets/css/animate.min.css">
-    <link rel="stylesheet" href="~/Content/assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="~/Content/assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="~/Content/assets/css/slick.min.css">
-    <link rel="stylesheet" href="~/Content/assets/style.css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Watch shop | Shop</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/flaticon.css">
+    <link rel="stylesheet" href="~/Content/slicknav.css">
+    <link rel="stylesheet" href="~/Content/animate.min.css">
+    <link rel="stylesheet" href="~/Content/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/Content/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/slick.css">
+    <link rel="stylesheet" href="~/Content/nice-select.css">
+    <link rel="stylesheet" href="~/Content/style.css">
 </head>
 <body>
-    <header>
-        <!-- Header Start -->
-        <div class="header-area">
-            <div class="main-header header-sticky">
-                <div class="container-fluid">
-                    <div class="menu-wrapper">
-                        <!-- Main-menu -->
-                        <div class="main-menu d-none d-lg-block">
-                            <nav>
-                                <ul id="navigation">
-                                    <li><a href="index.html">Home</a></li>
+    <div class="container body-content">
+        <header>
+            <!-- Header Start -->
+            <div class="header-area">
+                <div class="main-header header-sticky">
+                    <div class="container-fluid">
+                        <div class="menu-wrapper">
+                            <!-- Main-menu -->
+                            <div class="main-menu d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a href="../index.html">Home</a></li>
+                                        <li>
+                                            <a href="shop.html">shop</a>
+                                            <ul class="submenu">
+                                                <li><a href="#">Men</a></li>
+                                                <li><a href="#">Women</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">about</a></li>
+
+                                        <li>
+                                            <a href="#">Pages</a>
+                                            <ul class="submenu">
+                                                <li><a href="login.html">Login</a></li>
+                                                <li><a href="cart.html">Cart</a></li>
+                                                <li><a href="checkout.html">Product Checkout</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!-- Header Right -->
+                            <div class="header-right">
+                                <ul>
                                     <li>
-                                        @Html.ActionLink("Shop", "Index", "Watch")
-                                        <ul class="submenu">
-                                            <li><a href="#">Men</a></li>
-                                            <li><a href="#">Women</a></li>
-                                        </ul>
+                                        <div class="nav-search search-switch">
+                                            <span class="#">Search</span>
+                                        </div>
                                     </li>
-                                    <li><a href="~/Watch/About">about</a></li>
-                                    <li>
-                                        <a href="#">Pages</a>
-                                        <ul class="submenu">
-                                            <li><a href="./pages/login.html">Login</a></li>
-                                            <li>@Html.ActionLink("Cart", "Index", "Cart")</li>
-                                            <li><a href="./pages/checkout.html">Product Checkout</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>@Html.ActionLink("Contact", "About", "Watch")</li>
+                                    <li> <a href="./pages/login.html"><span class="#">Login</span></a></li>
+                                    <li><a href="./pages/cart.html"><span class="#">Cart</span></a> </li>
                                 </ul>
-                            </nav>
+                            </div>
                         </div>
-                        <!-- Header Right -->
-                        <div class="header-right">
-                            <ul>
-                                <li>
-                                    <div class="nav-search search-switch">
-                                        <span class="flaticon-user">Search</span>
-                                    </div>
-                                </li>
-                                <li> <a href="./pages/login.html"><span class="flaticon-user">Login</span></a></li>
-                                <li><a href="@Url.Action("Index", "Cart")"><span class="flaticon-shopping-cart">Cart</span></a> </li>
-                            </ul>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
                         </div>
-                    </div>
-                    <!-- Mobile Menu -->
-                    <div class="col-12">
-                        <div class="mobile_menu d-block d-lg-none"></div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Header End -->
-    </header>
-    <div class="body-content">
+            <!-- Header End -->
+        </header>
         @RenderBody()
         <hr />
         <footer>
-            <!-- Footer Start-->
-            <div class="footer-area footer-padding">
-                <div class="container">
-                    <div class="row d-flex justify-content-between">
-                        <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
-                            <div class="single-footer-caption mb-50">
-                                <div class="single-footer-caption mb-30">
-                                    <!-- logo -->
-                                    <div class="footer-logo">
-                                        <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
-                                    </div>
-                                    <div class="footer-tittle">
-                                        <div class="footer-pera">
-                                            <p>A project for Web Programming - Clone Layout From Rolex Watch</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
-                            <div class="single-footer-caption mb-50">
-                                <div class="footer-tittle">
-                                    <h4>Rolex Watch</h4>
-                                    <ul>
-                                        <li><a href="#">Rolex watches</a></li>
-                                        <li><a href="#">Men's watches</a></li>
-                                        <li><a href="#">Women's watches</a></li>
-                                        <li><a href="#">History</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-7">
-                            <div class="single-footer-caption mb-50">
-                                <div class="footer-tittle">
-                                    <h4>The Collection</h4>
-                                    <ul>
-                                        <li><a href="#">Explorer</a></li>
-                                        <li><a href="#">Air-King</a></li>
-                                        <li><a href="#">Day-Date</a></li>
-                                        <li><a href="#">Sea-Dweller</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
-                            <div class="single-footer-caption mb-50">
-                                <div class="footer-tittle">
-                                    <h4>Legal Notice</h4>
-                                    <ul>
-                                        <li><a href="#">Term of Use</a></li>
-                                        <li><a href="#">Private Notice</a></li>
-                                        <li><a href="#">Cookies</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Footer bottom -->
-                    <div class="row align-items-center">
-                        <div class="col-xl-7 col-lg-8 col-md-7">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Footer End-->
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
 
-    @*@Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")*@
-    <script src="~/Content/assets/js/vendor/modernizr-3.5.0.min.js"></script>
-    <!-- Jquery, Popper, Bootstrap -->
-    <script src="~/Content/assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="~/Content/assets/js/popper.min.js"></script>
-    <script src="~/Content/assets/js/bootstrap.min.js"></script>
-    <!-- Jquery Mobile Menu -->
-    <script src="~/Content/assets/js/jquery.slicknav.min.js"></script>
-
-    <!-- Jquery Slick , Owl-Carousel Plugins -->
-    <script src="~/Content/assets/js/owl.carousel.min.js"></script>
-    <script src="~/Content/assets/js/slick.min.js"></script>
-
-    <!-- One Page, Animated-HeadLin -->
-    <script src="~/Content/assets/js/wow.min.js"></script>
-    <script src="~/Content/assets/js/animated.headline.js"></script>
-    <script src="~/Content/assets/js/jquery.magnific-popup.js"></script>
-
-    <!-- Scrollup, nice-select, sticky -->
-    <script src="~/Content/assets/js/jquery.scrollUp.min.js"></script>
-    <script src="~/Content/assets/js/jquery.nice-select.min.js"></script>
-    <script src="~/Content/assets/js/jquery.sticky.js"></script>
-
-    <!-- Jquery Plugins, main Jquery -->
-    <script src="~/Content/assets/js/plugins.js"></script>
-    <script src="~/Content/assets/js/main.js"></script>
-
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>
