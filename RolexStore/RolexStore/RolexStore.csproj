@@ -212,6 +212,8 @@
     <Content Include="Content\js\swiper.min.js" />
     <Content Include="Content\js\swiper_custom.js" />
     <Content Include="Content\js\theme.js" />
+    <Content Include="Content\js\vendor\jquery-1.12.4.min.js" />
+    <Content Include="Content\js\vendor\modernizr-3.5.0.min.js" />
     <Content Include="Content\js\waypoints.min.js" />
     <Content Include="Content\js\wow.min.js" />
     <Content Include="Content\nice-select.css" />
